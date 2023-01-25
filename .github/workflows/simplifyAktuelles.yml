@@ -1,0 +1,18 @@
+name: simplifyAktuelles
+on:
+  push:
+    paths:
+      - dynamicData/aktuelles/**
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: simplifyAktuelles
+        run: ./scripts/simplifyAktuelles.sh
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: simplifyAktuelles
+          push_options: "--force"
